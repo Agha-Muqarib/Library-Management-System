@@ -27,6 +27,16 @@ Create and activate virtual environment using <br>
    source bin/activate
 ``` 
 <br>
-
 ### Run Steps:
 
+```ruby 
+   python manage.py makemigrations
+```
+
+```ruby 
+   python manage.py migrate
+``` 
+
+```ruby 
+   python manage.py runserver
+``` 
