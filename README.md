@@ -28,9 +28,5 @@ Create and activate virtual environment using <br>
 ``` 
 <br>
 
-3. Change the directory using <br>
-`cd ..` <br>
-` cd RestrauntApp-Django master`
+### Run Steps:
 
-4. Now run django server <br>
-`py manage.py runserver`
