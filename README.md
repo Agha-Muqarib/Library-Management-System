@@ -1,6 +1,6 @@
 # Library-Management-System
 
-The repository contins web pages using Django web development framework in python language. It contains
+The repository contains web pages using Django web development framework in python language. It contains
   a) Two Forms Students and Books 
   b) One Form to issue a book to particular student. (where multiple transaction require on one student).
  
