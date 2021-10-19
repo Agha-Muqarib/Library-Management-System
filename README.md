@@ -15,15 +15,18 @@ Open terminal using Ctrl + Alt + T. Run the following command <br>
 Create and activate virtual environment using <br>
 ```ruby
    virtualenv -p python3 venv
-``` <br>
+```
+<br>
 
 ```ruby
     cd venv
-``` <br>
+``` 
+<br>
 
 ```ruby 
    source bin/activate
-``` <br>
+``` 
+<br>
 
 3. Change the directory using <br>
 `cd ..` <br>
