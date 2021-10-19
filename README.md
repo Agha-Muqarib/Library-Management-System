@@ -9,7 +9,8 @@ The repository contins web pages using Django web development framework in pytho
 
 Open terminal using Ctrl + Alt + T. Run the following command <br>
 ```ruby 
-   git clone https://github.com/Agha-Muqarib/Library-Management-System.git ```
+   git clone https://github.com/Agha-Muqarib/Library-Management-System.git 
+```
 
 2. Create and active virtual environment using <br>
 ``` virtualenv -p python3 venv``` <br>
