@@ -12,10 +12,18 @@ Open terminal using Ctrl + Alt + T. Run the following command <br>
    git clone https://github.com/Agha-Muqarib/Library-Management-System.git 
 ```
 
-2. Create and active virtual environment using <br>
-``` virtualenv -p python3 venv``` <br>
-``` cd venv``` <br>
-```source bin/activate``` <br>
+Create and activate virtual environment using <br>
+```ruby
+   virtualenv -p python3 venv
+``` <br>
+
+```ruby
+    cd venv
+``` <br>
+
+```ruby 
+   source bin/activate
+``` <br>
 
 3. Change the directory using <br>
 `cd ..` <br>
