@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Student</title>
+</head>
+<body>
+{% block content %}
+<div class="form">
+<form method="POST" action="add_new" class="form-inline">
+    {% csrf_token %}
+    <label>Roll Number:</label><br><div>{{form.std_rn}}</div>
+    <label>Student Name:</label><br> <div> {{form.std_name}}</div>
+    <label>Student Address:</label><br> <div> {{form.std_address}}</div>
+    <label>Student Study Program:</label><br> <div>{{form.std_study_pro}}</div>
+    <br> <button type="submit" class="btn btn-warning">Add Student</button>
+</form>
+</div>
+{% endblock %}
+
+<style>
+
+    .form{
+        margin-left:50em;
+        border: black solid 2px;
+
+    }
+</style>
+
+</body>
+</html>

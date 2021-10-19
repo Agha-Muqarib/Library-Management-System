@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Issue Records </title>
+</head>
+<body>
+{% block content %}
+<table class="table table-striped">
+<tr>
+    <th>Student ID </th>
+    <th>Book ID </th>
+    <th>Issue Date </th>
+    <th>Return Date</th>
+    <th>Remarks</th>
+</tr>
+    {%for i in issue%}
+    <tr>
+    <td>{{i.student}}</td>
+    <td>{{i.book}}</td>
+        <td>{{i.issue_date}}</td>
+        <td>{{i.return_date}}</td>
+        <td>{{i.remarks}}</td>
+        <td><a href="edit/{{i.id}}">Edit </a> | <a
+        href="delete/{{i.id}}">Delete</a></td>
+    </tr> {% endfor %}
+</table>
+
+
+{% endblock %}
+</body>
+</html>

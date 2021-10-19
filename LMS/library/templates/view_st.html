@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME PAGE</title>
+</head>
+<body>
+{% block content %}
+<table class="table table-striped">
+<tr>
+    <th>Student Roll no </th>
+    <th>Student Name </th>
+    <th>Student Address </th>
+    <th>Student Study Program </th>
+    <th>Actions</th>
+</tr>
+    {%for s in stud%}
+    <tr>
+    <td>{{s.std_rn}}</td>
+    <td>{{s.std_name}}</td>
+        <td>{{s.std_address}}</td>
+        <td>{{s.std_study_pro}}</td>
+        <td><a href="edit/{{s.id}}">Edit </a> | <a
+        href="delete/{{s.id}}">Delete</a></td>
+    </tr> {% endfor %}
+</table>
+
+
+{% endblock %}
+</body>
+</html>
