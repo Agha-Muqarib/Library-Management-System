@@ -29,6 +29,14 @@ Create and activate virtual environment using <br>
 <br>
 
 ### Run Steps:
+```ruby 
+   cd ..
+```
+
+```ruby 
+   cd LMS
+```
+
 
 ```ruby 
    python manage.py makemigrations
