@@ -16,10 +16,10 @@
 </tr>
     {%for s in stud%}
     <tr>
-    <td>{{s.std_rn}}</td>
-    <td>{{s.std_name}}</td>
-        <td>{{s.std_address}}</td>
-        <td>{{s.std_study_pro}}</td>
+    <td>{{s.roll_number}}</td>
+    <td>{{s.fullname}}</td>
+        <td>{{s.address}}</td>
+        <td>{{s.progrom}}</td>
         <td><a href="edit/{{s.id}}">Edit </a> | <a
         href="delete/{{s.id}}">Delete</a></td>
     </tr> {% endfor %}
