@@ -7,7 +7,7 @@ class Students(models.Model):
     address = models.CharField(max_length=100)
     program = models.CharField(max_length=100)
     Guardian_name=models.CharField(max_length=100,help_text="parent/guardian full name")
-    
+    Email=models.EmailField(max_length=100,help_text="Guardian/parent e-mail")
     def __str__(self):
         return self.std_name
     def __str__(self):
