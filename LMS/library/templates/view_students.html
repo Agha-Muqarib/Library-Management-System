@@ -6,6 +6,9 @@
 </head>
 <body>
 {% block content %}
+<div id="message">
+    {{message}}
+</div>
 <table class="table table-striped">
 <tr>
     <th>Student Roll no </th>
@@ -14,14 +17,14 @@
     <th>Student Study Program </th>
     <th>Actions</th>
 </tr>
-    {%for s in stud%}
+    {%for student in students%}
     <tr>
-    <td>{{s.roll_number}}</td>
-    <td>{{s.fullname}}</td>
-        <td>{{s.address}}</td>
-        <td>{{s.progrom}}</td>
-        <td><a href="edit/{{s.id}}">Edit </a> | <a
-        href="delete/{{s.id}}">Delete</a></td>
+    <td>{{student.roll_number}}</td>
+    <td>{{student.fullname}}</td>
+        <td>{{student.address}}</td>
+        <td>{{student.progrom}}</td>
+        <td><a href="edit/student/{{student.roll_number}}">Edit </a> | <a
+        href="delete/student/{{student.roll_number}}">Delete</a></td>
     </tr> {% endfor %}
 </table>
 

@@ -2,7 +2,7 @@ from django.db import models
 from datetime import datetime,timedelta
 
 class Students(models.Model):
-    roll_number = models.CharField(max_length=100)
+    roll_number = models.CharField(max_length=100,unique=True)
     fullname = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     program = models.CharField(max_length=100)

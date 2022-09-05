@@ -13,13 +13,13 @@
     <th>Book pages </th>
     <th>Actions</th>
 </tr>
-    {%for b in bk%}
+    {%for book in books%}
     <tr>
-    <td>{{b.book_title}}</td>
-    <td>{{b.book_author}}</td>
-        <td>{{b.book_pages}}</td>
-        <td><a href="edit/{{b.id}}">Edit </a> | <a
-        href="delete/{{b.id}}">Delete</a></td>
+    <td>{{book.book_title}}</td>
+    <td>{{book.book_author}}</td>
+        <td>{{book.book_pages}}</td>
+        <td><a href="edit/book/{{book.id}}">Edit </a> | <a
+        href="delete/book/{{book.id}}">Delete</a></td>
     </tr> {% endfor %}
 </table>
 
