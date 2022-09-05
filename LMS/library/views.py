@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,HttpResponse
 from .forms import StudentsForm, BookForm, Book_IssueForm
 from .models import Students, Book, Book_Issue
 
@@ -79,3 +79,11 @@ def edit_student_data(request,roll):
 
     except Exception as error:
         print(f"{error} occured at edit_student_data view")
+
+def delete_student(request,roll):
+    return HttpResponse("<h2>The feature is comming soon</h2>")
+    pass
+
+def delete_book(request,id):
+    return HttpResponse("<h2>The feature is comming soon</h2>")
+    pass

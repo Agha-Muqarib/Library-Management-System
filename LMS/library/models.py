@@ -9,9 +9,7 @@ class Students(models.Model):
     Guardian_name=models.CharField(max_length=100,help_text="parent/guardian full name")
     Email=models.EmailField(max_length=100,help_text="Guardian/parent e-mail")
     def __str__(self):
-        return self.std_name
-    def __str__(self):
-        return str(self.std_rn)
+        return self.fullname
 
 class Book(models.Model):
     book_title = models.CharField(max_length=200)
@@ -35,4 +33,4 @@ class Book_Issue(models.Model):
     borrowed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.Students.std_name + " borrowed " + self.Book.book_title
+        return self.student.fullname + " borrowed " + self.book.book_title

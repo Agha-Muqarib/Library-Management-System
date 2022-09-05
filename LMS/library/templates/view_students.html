@@ -15,6 +15,8 @@
     <th>Student Name </th>
     <th>Student Address </th>
     <th>Student Study Program </th>
+    <th>Student Guardian/parent</th>
+    <th>Guardian/parent Email</th>
     <th>Actions</th>
 </tr>
     {%for student in students%}
@@ -23,6 +25,8 @@
     <td>{{student.fullname}}</td>
         <td>{{student.address}}</td>
         <td>{{student.progrom}}</td>
+        <td>{{student.Guardian_name}}</td>
+        <td>{{student.Email}}</td>
         <td><a href="edit/student/{{student.roll_number}}">Edit </a> | <a
         href="delete/student/{{student.roll_number}}">Delete</a></td>
     </tr> {% endfor %}

@@ -13,5 +13,7 @@ urlpatterns = [
     path('view_books', views.view_books, name='SHOW BOOK RECORD'),
     path('view_books_issued', views.view_bissue, name='SHOW ISSUED RECORD'),
     path('edit/student/<str:roll>',views.edit_student_data,name="Edit Student data"),
+    path('delete/student/<str:roll>',views.delete_student,name="Delete Student data"),
+    path('delete/book/<str:id>',views.delete_book,name="Delete book data"),
 
 ]

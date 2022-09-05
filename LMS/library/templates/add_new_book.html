@@ -6,11 +6,12 @@
 </head>
 <body>
 {% block content %}
-<form method="POST" action="add_new2" class="form-inline">
+<form method="POST" action="add_new_book" class="form-inline">
     {% csrf_token %}
     <label>Book Title.</label><br><div>{{form.book_title}}</div>
     <label>Book Author.</label><br> <div> {{form.book_author}}</div>
     <label>Book Pages.</label><br> <div> {{form.book_pages}}</div>
+    <label>Book summary<i>(if any)</i></label><br> <div> {{form.summary}}</div>
     <br> <button type="submit" class="btn btn-warning">Add Book</button> </form>
 
 {% endblock %}

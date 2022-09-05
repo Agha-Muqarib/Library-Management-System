@@ -7,7 +7,7 @@
 <body>
 {% block content %}
 
-<form method="POST" action="add_new3" class="form-inline">
+<form method="POST" action="add_book_issue" class="form-inline">
     {% csrf_token %}
     <label>Student ID</label><br><div>{{form.student}}</div>
     <label>Book ID</label><br> <div> {{form.book}}</div>
