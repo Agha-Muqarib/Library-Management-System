@@ -50,7 +50,7 @@ def view_students(request):
     return render(request,'view_students.html', {'students': students})
 
 def view_books(request):
-    books = Book.objects.order_by('-id')
+    books = Book.objects.order_by('id')
     return render(request,'view_books.html', {'books': books})
 
 def view_bissue(request):

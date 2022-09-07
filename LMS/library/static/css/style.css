@@ -1,0 +1,29 @@
+form{
+    margin-left:30%;
+    border: black solid 5px;
+    border-radius:8px;
+    background-color: rgb(167, 183, 183);
+    padding:10px;
+
+    width: 40%;
+}
+#view_searched{
+    display:none;
+    position: absolute;
+    margin-left:2%;
+    border-radius:5px ;
+    font-size: 2rem;
+    background-color: rgba(240, 245, 245, 0.944);
+   
+}
+.search{
+    padding:5px;
+}
+#student_search_input{
+    width:30%;
+}
+
+li{
+    padding:2px;
+    margin-left:3px;
+}

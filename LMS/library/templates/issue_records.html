@@ -11,6 +11,7 @@
     <th>Return Date</th>
     <th>Remarks</th>
     <th>Returned</th>
+    <th>Actions</th>
 </tr>
     {%for i in issue%}
     <tr>
@@ -20,15 +21,16 @@
         <td>{{i.return_date}}</td>
         <td>{{i.remarks}}</td>
         <td>
-            {%if not i.Is_borrowed %}
-            <span><i class="fa fa-check-circle" style="color:green"></i></span>
-            {%else%}
+            {%if i.Is_borrowed %}
             <span><i class="fa fa-times-circle" style="color:rgb(128, 28, 0)"></i></span>
             <td><a>Return book</a></td>
+            {%else%}
+            <span><i class="fa fa-check-circle" style="color:green"></i></span>
+            <td><a href="edit/{{i.id}}"><i class="fa fa-edit"></i> </a> | <a href="delete/{{i.id}}"><i class="fa fa-trash-alt"></i></a></td>
             {%endif%}
         </td>
 
-        <td><a href="edit/{{i.id}}">Edit </a> | <a href="delete/{{i.id}}">Delete</a></td>
+        
         
     </tr> {% endfor %}
 </table>
