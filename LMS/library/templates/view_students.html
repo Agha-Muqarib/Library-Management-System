@@ -1,9 +1,6 @@
+<title>Student</title>
 {% extends 'base.html' %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>HOME PAGE</title>
-</head>
+
 <body>
 {% block content %}
 <div id="message">
@@ -24,7 +21,7 @@
     <td>{{student.roll_number}}</td>
     <td>{{student.fullname}}</td>
         <td>{{student.address}}</td>
-        <td>{{student.progrom}}</td>
+        <td>{{student.program}}</td>
         <td>{{student.Guardian_name}}</td>
         <td>{{student.Email}}</td>
         <td><a href="edit/student/{{student.roll_number}}">Edit </a> | <a

@@ -1,0 +1,6 @@
+change Book model by 
+    adding a availability indicator
+    adding optional decrisption section about the book
+    Language
+    
+Change model field names into meaningful names not abbreviations

@@ -1,6 +1,9 @@
+from secrets import choice
 from django.shortcuts import render, redirect,HttpResponse
 from .forms import StudentsForm, BookForm, Book_IssueForm
 from .models import Students, Book, Book_Issue
+# from random 
+import random
 
 
 def index(request):

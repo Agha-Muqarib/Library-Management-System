@@ -29,8 +29,8 @@ class Book_Issue(models.Model):
     issue_date = models.DateTimeField(auto_now=True)
     return_date = models.DateTimeField(default=get_returndate())
     remarks = models.CharField(max_length=100, default="Some Remarks")
-    returned=models.BooleanField(default=True)
-    borrowed = models.BooleanField(default=False)
+    # returned=models.BooleanField(default=True)
+    Is_borrowed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.student.fullname + " borrowed " + self.book.book_title
