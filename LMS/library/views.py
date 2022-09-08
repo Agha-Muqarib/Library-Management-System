@@ -1,7 +1,7 @@
 from secrets import choice
 from django.shortcuts import render, redirect,HttpResponse
-from .forms import StudentsForm, BookForm, Book_IssueForm
-from .models import Students, Book, Book_Issue
+from .forms import StudentsForm, BookForm, Book_IssueForm,Book_instanceForm
+from .models import Students, Book, Book_Issue,BookInstance
 # from random 
 import random
 
@@ -23,15 +23,22 @@ def add_new_student(request):
 
 
 def add_new_book(request):
+    print(request)
     if request.method=="POST":
+        print(request.POST)
+        pass
         form = BookForm(request.POST)
         if form.is_valid():
             # save data
-            form.save()
+            form=form.save()
+            book_instance=BookInstance(book=form)
+            book_instance.save()
             return redirect('/view_books')
     else:
         form = BookForm
-        return (render(request, 'add_new_book.html', {'form':form}))
+        form_instance=Book_instanceForm
+        # (queryset=BookInstance.objects.filter(Is_borrowed=False))
+        return (render(request, 'add_new_book.html', {'form':form,"form_instance":form_instance}))
 
 
 def add_book_issue(request):
@@ -50,7 +57,8 @@ def view_students(request):
     return render(request,'view_students.html', {'students': students})
 
 def view_books(request):
-    books = Book.objects.order_by('id')
+    # books = Book.objects.order_by('id')
+    books=BookInstance.objects.order_by('id')
     return render(request,'view_books.html', {'books': books})
 
 def view_bissue(request):
@@ -90,3 +98,12 @@ def delete_student(request,roll):
 def delete_book(request,id):
     return HttpResponse("<h2>The feature is comming soon</h2>")
     pass
+
+def add_new_book_instance(request):
+    form=Book_instanceForm(request.POST)
+    if form.is_valid():
+        # save data in
+        print(request.POST)
+        # print(form)
+        pass
+    return redirect('/view_books')

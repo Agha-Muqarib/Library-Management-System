@@ -27,3 +27,18 @@ li{
     padding:2px;
     margin-left:3px;
 }
+#new_book ,#new_book_instance{
+    display:none;
+}
+.tablinks{
+    background-color: rgb(167, 183, 183);
+    width:30%;
+    margin-left:35%;
+    padding:2px;
+    border-radius:5px;
+}
+.tablinks button{
+    padding:10px;
+    color:black;
+    /* background-color: */
+}

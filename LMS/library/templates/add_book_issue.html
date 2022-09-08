@@ -9,10 +9,10 @@
 <form method="POST" action="add_book_issue" class="form-inline">
     {% csrf_token %}
     <label>Student ID</label><br><div>{{form.student}}</div>
-    <label>Book ID</label><br> <div> {{form.book}}</div>
+    <label>Book ID</label><br> <div> {{form.book_instance}}</div>
     <!-- <label>Issue Date</label><br> <div> {{form.issue_date}}</div> -->
     <!-- <label>Return Date</label><br> <div>{{form.return_date}}</div> -->
-    <label>Remarks</label><br> <div> {{form.remarks}}</div>
+    <label>Remarks</label><br> <div> {{form.remarks_on_issue}}</div>
     <br> <button type="submit" class="btn btn-success">Issue Book</button> </form>
 
 {% endblock %}

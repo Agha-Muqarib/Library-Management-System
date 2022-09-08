@@ -5,22 +5,48 @@
 {% block content %}
 <table class="table table-striped">
 <tr>
+    <th>Book ID</th>
     <th>Book title </th>
     <th>Book author </th>
     <th>Book pages </th>
+    <th>book Number </th>
+    <th>Is Available</th>
     <th>Actions</th>
 </tr>
     {%for book in books%}
     <tr>
-    <td>{{book.book_title}}</td>
-    <td>{{book.book_author}}</td>
-        <td>{{book.book_pages}}</td>
+    <td>{{book.id}}</td>
+    <td>{{book.book.book_title}}</td>
+    <td>{{book.book.book_author}}</td>
+    <td>{{book.book.book_pages}}</td>
+    <td>{{book.book_number}}</td>
+    <td>
+        {%if  book.Is_borrowed %}
+        <span><i class="fa fa-times-circle" style="color:rgb(128, 28, 0)"></i></span>
+        <td><a>Return book</a></td>
+        {%else%}
+        <span><i class="fa fa-check-circle" style="color:green"></i></span>
         <td><a href="edit/book/{{book.id}}"><i class="fa fa-edit"></i></a> | <a
-        href="delete/book/{{book.id}}"><i class="fa fa-trash-alt"></i></a></td>
+            href="delete/book/{{book.id}}"><i class="fa fa-trash-alt"></i></a></td>
+        {%endif%}
+    </td>
+
     </tr> {% endfor %}
 </table>
 
+<table>
+{%for book in bk%}
+<tr>
+<td>{{book.book.book_title}}</td>
+<td>{{book.book.book_author}}</td>
+<td>{{book.book.book_pages}}</td>
+<td>{{book.book_author}}</td>
 
+    <td>{{book.Is_borrowed}}</td>
+
+</tr> {% endfor %}
+
+</table>
 {% endblock %}
 </body>
 </html>

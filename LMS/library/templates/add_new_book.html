@@ -3,14 +3,59 @@
 
 <body>
 {% block content %}
-<form method="POST" action="add_new_book" class="form-inline">
-    {% csrf_token %}
-    <label>Book Title.</label><br><div>{{form.book_title}}</div>
-    <label>Book Author.</label><br> <div> {{form.book_author}}</div>
-    <label>Book Pages.</label><br> <div> {{form.book_pages}}</div>
-    <label>Book summary<i>(if any)</i></label><br> <div> {{form.summary}}</div>
-    <br> <button type="submit" class="btn btn-success">Add Book</button> </form>
+
+    <div class="tablinks">
+        <button onclick="opentab(event,'new_book')" class="link" name="new_book">New Book</button>
+        <button onclick="opentab(event,'new_book_instance')" class="link" name="new_book_instance">New Book Instance</button>
+    </div>
+
+    <div id="new_book" class="books">
+        <form method="POST" action="add_new_book" class="form-inline">
+            {% csrf_token %}
+        <label>Book Title.</label><br><div>{{form.book_title}}</div>
+        <label>Book Author.</label><br> <div> {{form.book_author}}</div>
+        <label>Book Pages.</label><br> <div> {{form.book_pages}}</div>
+        <label>Book summary<i>(if any)</i></label><br> <div> {{form.summary}}</div>
+        <div>
+            <label>Multiple Same Books</label>    
+            <input type="radio" name="mode" id="multiple" value="Multiple">
+            <label>Single  book</label>    
+            <input type="radio" value="single" name="mode" id="single">
+        </div>
+        <br> <button type="submit" class="btn btn-success">Add Book</button> 
+        </form>
+    </div>
+
+    <div id="new_book_instance" class="books">
+    <form method="POST" action="add_new_book_instance" class="form-inline">
+        {% csrf_token %}
+        <label>Book</label><br><div>{{form_instance.book}}</div>
+        <label>Book Number</label>
+        <div>{{form_instance.book_number}}</div>
+        <br> <button type="submit" class="btn btn-success">Add Book</button> 
+    </form>
+    </div>
+
+    <script type="text/javascript">
+        function opentab(evt,tab_name){
+         var tab=document.getElementById(tab_name);
+         var i, tabcontent, tablinks;
+         tabcontent = document.getElementsByClassName("books");
+         for (i = 0; i < tabcontent.length; i++) {
+             tabcontent[i].style.display = "none";
+         }
+         tablinks = document.getElementsByClassName("link");
+         for (i = 0; i < tablinks.length; i++) {
+             tablinks[i].className = tablinks[i].className.replace(" active", "");
+         }
+         tab.style.display = "block";
+         event.currentTarget.className += " active";
+             // tab.style.display=
+             // alert(90);
+     }
+    </script>
 
 {% endblock %}
 </body>
+
 </html>
