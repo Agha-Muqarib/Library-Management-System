@@ -2,8 +2,6 @@ from secrets import choice
 from django.shortcuts import render, redirect,HttpResponse
 from .forms import StudentsForm, BookForm, Book_IssueForm,Book_instanceForm
 from .models import Students, Book, Book_Issue,BookInstance
-# from random 
-import random
 
 
 def index(request):
@@ -46,18 +44,24 @@ def add_book_issue(request):
         form = Book_IssueForm(request.POST)
         if form.is_valid():
             # save data
-            form.save()
+            unsaved_form=form.save(commit=False)
+            book_to_save=BookInstance.objects.get(id=unsaved_form.book_instance.id)
+            book_to_save.Is_borrowed=True
+            # book_to_save.save()
+            # form.save()
+            form.save_m2m()
+            print("saved")
             return redirect('/view_books_issued')
     else:
-        form = Book_IssueForm
-        return (render(request, 'add_book_issue.html', {'form':form}))
+        form=Book_IssueForm
+        bk=(BookInstance.objects.filter(Is_borrowed=False))
+        return (render(request, 'add_book_issue.html', {'form':form,"book":bk},))
 
 def view_students(request):
     students = Students.objects.order_by('-id')
     return render(request,'view_students.html', {'students': students})
 
 def view_books(request):
-    # books = Book.objects.order_by('id')
     books=BookInstance.objects.order_by('id')
     return render(request,'view_books.html', {'books': books})
 

@@ -5,25 +5,29 @@
 {% block content %}
 <table class="table table-striped">
 <tr>
-    <th>Student ID </th>
+    <th>Student name </th>
     <th>Book ID </th>
     <th>Issue Date </th>
+    <th>Due Date</th>
     <th>Return Date</th>
-    <th>Remarks</th>
+    <th>Remarks on Issuing</th>
+    <th>Remarks on Return</th>
     <th>Returned</th>
     <th>Actions</th>
 </tr>
     {%for i in issue%}
     <tr>
         <td>{{i.student}}</td>
-        <td>{{i.book}}</td>
+        <td>{{i.book_instance.id}}</td>
         <td>{{i.issue_date}}</td>
-        <td>{{i.return_date}}</td>
-        <td>{{i.remarks}}</td>
+        <td>{{i.due_date}}</td>
+        <td>{{i.date_returned}}</td>
+        <td>{{i.remarks_on_issue}}</td>
+        <td>{{i.remarks_on_return}}</td>
         <td>
-            {%if i.Is_borrowed %}
+            {%if i.book_instance.Is_borrowed %}
             <span><i class="fa fa-times-circle" style="color:rgb(128, 28, 0)"></i></span>
-            <td><a>Return book</a></td>
+            <td><a>Re</a></td>
             {%else%}
             <span><i class="fa fa-check-circle" style="color:green"></i></span>
             <td><a href="edit/{{i.id}}"><i class="fa fa-edit"></i> </a> | <a href="delete/{{i.id}}"><i class="fa fa-trash-alt"></i></a></td>
