@@ -47,11 +47,10 @@ def add_book_issue(request):
             unsaved_form=form.save(commit=False)
             book_to_save=BookInstance.objects.get(id=unsaved_form.book_instance.id)
             book_to_save.Is_borrowed=True
-            # book_to_save.save()
-            # form.save()
+            book_to_save.save()
+            form.save()
             form.save_m2m()
-            print("saved")
-            return redirect('/view_books_issued')
+        return redirect('/view_books_issued')
     else:
         form=Book_IssueForm
         bk=(BookInstance.objects.filter(Is_borrowed=False))

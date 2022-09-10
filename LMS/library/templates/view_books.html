@@ -31,7 +31,11 @@
     <td>
         {%if  book.Is_borrowed %}
         <span><i class="fa fa-times-circle" style="color:rgb(128, 28, 0)"></i></span>
-        <td><a>Return book</a></td>
+        <td>
+            <a><i class="fa fa-arrow-alt-circle-right"></i><i class="fa fa-book"></i></a> |
+            <a href="edit/book/{{book.id}}"><i class="fa fa-edit"></i></a> | 
+                <a href="delete/book/{{book.id}}"><i class="fa fa-trash-alt"></i></a>
+            </td>
         {%else%}
         <span><i class="fa fa-check-circle" style="color:green"></i></span>
         <td><a href="edit/book/{{book.id}}"><i class="fa fa-edit"></i></a> | <a
