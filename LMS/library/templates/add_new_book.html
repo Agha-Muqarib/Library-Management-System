@@ -5,8 +5,8 @@
 {% block content %}
 
     <div class="tablinks">
-        <button onclick="opentab(event,name)" class="link" name="new_book">New Book</button>
-        <button onclick="opentab(event,name)" class="link" name="new_book_instance">New Book Instance</button>
+        <button onclick="opentab(name)" class="link" name="new_book">New Book</button>
+        <button onclick="opentab(name)" class="link" name="new_book_instance">New Book Instance</button>
     </div>
 
     <div id="new_book" class="books">
@@ -16,7 +16,7 @@
         <label>Book Author.</label><br> <div> {{form.book_author}}</div>
         <label>Book Pages.</label><br> <div> {{form.book_pages}}</div>
         <label>Book summary<i>(if any)</i></label><br> <div> {{form.summary}}</div>
-        <div>
+        <!-- <div>
             <label>Multiple Same Books</label>    
             <input type="radio" name="mode" id="multiple" value="Multiple" onclick="toggle_quantity_input(id)">
             <label>Single  book</label>    
@@ -31,7 +31,7 @@
                 <label >Book Number(if any) </label><br>
                 <input name="book_number_list">
             </div>
-        </div>
+        </div> -->
         <br> <button type="submit" class="btn btn-success">Add Book</button> 
         </form>
     </div>
@@ -47,7 +47,7 @@
     </div>
 
 <script type="text/javascript">
-    function opentab(evt,tab_name){
+    function opentab(tab_name){
          var tab=document.getElementById(tab_name);
          var i, tabcontent, tablinks;
          tabcontent = document.getElementsByClassName("books");
@@ -59,19 +59,18 @@
              tablinks[i].className = tablinks[i].className.replace(" active", "");
          }
          tab.style.display = "block";
-        //  evt.currentTarget.className += "active";
 
     }
-    function toggle_quantity_input(id){
-        var obj=document.getElementById("multi");
-        document.getElementById("additional_data").style.display="block";
-        if(id=="single"){
-            obj.style.display="none";
-        }
-        else{
-            obj.style.display="block";   
-        }
-    }
+    // function toggle_quantity_input(id){
+    //     var obj=document.getElementById("multi");
+    //     document.getElementById("additional_data").style.display="block";
+    //     if(id=="single"){
+    //         obj.style.display="none";
+    //     }
+    //     else{
+    //         obj.style.display="block";   
+    //     }
+    // }
 </script>
 
 {% endblock %}

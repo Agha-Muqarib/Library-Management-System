@@ -1,4 +1,3 @@
-from secrets import choice
 from django.shortcuts import render, redirect,HttpResponse
 from .forms import StudentsForm, BookForm, Book_IssueForm,Book_instanceForm
 from .models import Students, Book, Book_Issue,BookInstance
@@ -12,7 +11,6 @@ def add_new_student(request):
     if request.method=="POST":
         form = StudentsForm((request.POST))
         if form.is_valid():
-            # save data
             form.save()
             return redirect('/show_students')
     else:
@@ -21,25 +19,23 @@ def add_new_student(request):
 
 
 def add_new_book(request):
-    # print(request)
     if request.method=="POST":
-        # print(request.POST)
-        pass
         form = BookForm(request.POST)
         if form.is_valid():
-            # save data
-            # print(form)
-            qt=request.POST.get('book_quantity')
-            bk_list=request.POST.get("book_number_list")
-            print(qt,bk_list)
-            # form=form.save()
-            # book_instance=BookInstance(book=form)
-            # book_instance.save()
+            form=form.save()
+            book_instance=BookInstance(book=form)
+            book_instance.save()
             return redirect('/view_books')
     else:
         form = BookForm
         form_instance=Book_instanceForm
         return (render(request, 'add_new_book.html', {'form':form,"form_instance":form_instance}))
+
+def add_new_book_instance(request):
+    form=Book_instanceForm(request.POST)
+    if form.is_valid():
+        form.save()
+    return redirect('/view_books')
 
 
 def add_book_issue(request):
@@ -55,9 +51,8 @@ def add_book_issue(request):
             form.save_m2m()
         return redirect('/view_books_issued')
     else:
-        form=Book_IssueForm
-        bk=(BookInstance.objects.filter(Is_borrowed=False))
-        return (render(request, 'add_book_issue.html', {'form':form,"book":bk},))
+        context={'form':Book_IssueForm,"book":BookInstance.objects.filter(Is_borrowed=False)}
+        return render(request, 'add_book_issue.html',context=context)
 
 def view_students(request):
     students = Students.objects.order_by('-id')
@@ -71,8 +66,6 @@ def view_bissue(request):
     issue = Book_Issue.objects.order_by('-id')
     return render(request,'issue_records.html', {'issue': issue})
 
-def save_edited_data(id,data_dict):
-    pass
 
 def edit_student_data(request,roll):
     try:
@@ -91,19 +84,20 @@ def edit_student_data(request,roll):
     except Exception as error:
         print(f"{error} occured at edit_student_data view")
 
+def edit_book_data(request,id):
+    return HttpResponse(f"<label>A book with ID: {id} could not be edited...</label><h2>The feature is comming soon</h2>")
+
 def delete_student(request,roll):
-    return HttpResponse(f"<label>Student with Roll Number: {roll} could not be deleted...</label><h2>The feature is comming soon</h2>")
+    return HttpResponse(f"<h2>Delete Student</h2><label>Student with Roll Number: {roll} could not be deleted...</label><h2>The feature is comming soon</h2>")
     pass
 
 def delete_book(request,id):
-    return HttpResponse(f"<label>Book with ID: {id} could not be deleted..</label><h2>The feature is comming soon</h2>")
-    pass
+    return HttpResponse(f"<h2>Delete Book</h2><label>Book with ID: {id} could not be deleted..</label><h2>The feature is comming soon</h2>")
 
-def add_new_book_instance(request):
-    form=Book_instanceForm(request.POST)
-    if form.is_valid():
-        # save data in
-        print(request.POST)
-        # print(form)
-        pass
-    return redirect('/view_books')
+def return_issued_book(request,id):   
+    obj=Book_Issue.objects.get(id=id)
+    return HttpResponse(f"<h2>Return Issued Book</h2><label>Book <i>{obj.book_instance.book.book_title}</i> issued to <i>{obj.student.fullname}</i> could not be returned..</label><h2>The feature is comming soon</h2>")
+
+def edit_issued(request, id):
+    obj=Book_Issue.objects.get(id=id)
+    return HttpResponse(f"<h2>Edit Issued Book</h2><label>Book <i>{obj.book_instance.book.book_title}</i> issued to <i>{obj.student.fullname}</i> could not be edited..</label><h2>The feature is comming soon</h2>")
