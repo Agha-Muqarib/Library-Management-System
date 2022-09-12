@@ -67,3 +67,6 @@ li{
 #student_selection{
     margin-left:5%;
 }
+#additional_data, #multi{
+    display:none;
+}

@@ -5,8 +5,8 @@
 {% block content %}
 
     <div class="tablinks">
-        <button onclick="opentab(event,'new_book')" class="link" name="new_book">New Book</button>
-        <button onclick="opentab(event,'new_book_instance')" class="link" name="new_book_instance">New Book Instance</button>
+        <button onclick="opentab(event,name)" class="link" name="new_book">New Book</button>
+        <button onclick="opentab(event,name)" class="link" name="new_book_instance">New Book Instance</button>
     </div>
 
     <div id="new_book" class="books">
@@ -18,9 +18,19 @@
         <label>Book summary<i>(if any)</i></label><br> <div> {{form.summary}}</div>
         <div>
             <label>Multiple Same Books</label>    
-            <input type="radio" name="mode" id="multiple" value="Multiple">
+            <input type="radio" name="mode" id="multiple" value="Multiple" onclick="toggle_quantity_input(id)">
             <label>Single  book</label>    
-            <input type="radio" value="single" name="mode" id="single">
+            <input type="radio" value="single" name="mode" id="single" onclick="toggle_quantity_input(id)">
+
+            <div id="additional_data">
+                <b>Note:<i>For multiple copies, separate book number with a comma (',')</i> </b>
+                <div id="multi">
+                    <label>Enter the Book Quantity</label><br>
+                    <input type="number" min="1" name="book_quantity"><br>
+                </div>
+                <label >Book Number(if any) </label><br>
+                <input name="book_number_list">
+            </div>
         </div>
         <br> <button type="submit" class="btn btn-success">Add Book</button> 
         </form>
@@ -36,8 +46,8 @@
     </form>
     </div>
 
-    <script type="text/javascript">
-        function opentab(evt,tab_name){
+<script type="text/javascript">
+    function opentab(evt,tab_name){
          var tab=document.getElementById(tab_name);
          var i, tabcontent, tablinks;
          tabcontent = document.getElementsByClassName("books");
@@ -51,8 +61,18 @@
          tab.style.display = "block";
         //  evt.currentTarget.className += "active";
 
-     }
-    </script>
+    }
+    function toggle_quantity_input(id){
+        var obj=document.getElementById("multi");
+        document.getElementById("additional_data").style.display="block";
+        if(id=="single"){
+            obj.style.display="none";
+        }
+        else{
+            obj.style.display="block";   
+        }
+    }
+</script>
 
 {% endblock %}
 </body>

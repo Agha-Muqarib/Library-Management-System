@@ -21,21 +21,24 @@ def add_new_student(request):
 
 
 def add_new_book(request):
-    print(request)
+    # print(request)
     if request.method=="POST":
-        print(request.POST)
+        # print(request.POST)
         pass
         form = BookForm(request.POST)
         if form.is_valid():
             # save data
-            form=form.save()
-            book_instance=BookInstance(book=form)
-            book_instance.save()
+            # print(form)
+            qt=request.POST.get('book_quantity')
+            bk_list=request.POST.get("book_number_list")
+            print(qt,bk_list)
+            # form=form.save()
+            # book_instance=BookInstance(book=form)
+            # book_instance.save()
             return redirect('/view_books')
     else:
         form = BookForm
         form_instance=Book_instanceForm
-        # (queryset=BookInstance.objects.filter(Is_borrowed=False))
         return (render(request, 'add_new_book.html', {'form':form,"form_instance":form_instance}))
 
 
@@ -73,33 +76,27 @@ def save_edited_data(id,data_dict):
 
 def edit_student_data(request,roll):
     try:
-        student_id=""
         if request.method == "POST":
-            std_roll=request.POST.get("roll_number")
-            std_name=request.POST.get("student_name")
-            std_program=request.POST.get("program")
-            std_address=request.POST.get("address")
-            std_guardian=request.POST.get("Guardian_name")
-            email=request.POST.get("email")
-            message=f"{std_name} edited"
-
-            # return render(request, 'index.html', {'message':message})
-            return redirect("/show_students",message)
+            std=Students.objects.get(id=request.session['id'])    
+            form = StudentsForm((request.POST),instance=std)
+            if form.is_valid():
+                form.save()
+            del request.session['id']
+            return redirect("/show_students")
         else:
-            student=Students.objects.filter(roll_number=roll).values()[0]
-            student_id=student["id"]
+            student_to_edit=Students.objects.get(roll_number=roll)
+            student=StudentsForm(instance=student_to_edit)
+            request.session["id"]=student_to_edit.id
             return render(request,'edit_student_data.html',{'student':student})
-
-
     except Exception as error:
         print(f"{error} occured at edit_student_data view")
 
 def delete_student(request,roll):
-    return HttpResponse("<h2>The feature is comming soon</h2>")
+    return HttpResponse(f"<label>Student with Roll Number: {roll} could not be deleted...</label><h2>The feature is comming soon</h2>")
     pass
 
 def delete_book(request,id):
-    return HttpResponse("<h2>The feature is comming soon</h2>")
+    return HttpResponse(f"<label>Book with ID: {id} could not be deleted..</label><h2>The feature is comming soon</h2>")
     pass
 
 def add_new_book_instance(request):

@@ -9,7 +9,8 @@
     {% csrf_token %}
     <label>Details</label>
     <label>Roll Number:</label><br>
-    <input type="text" name="roll_number" value={{student.roll_number}} required><br>
+    {{student}}
+    <!-- <input type="text" name="roll_number" value={{student.roll_number}} required><br>
     <label>Student Name:</label><br>
     <input type="text" name="student_name" value={{student.fullname}} required><br>
     <label>Student Address:</label><br> 
@@ -20,7 +21,7 @@
     <label>Full name:</label><br> 
     <input type="text" name="Guardian_name" value={{student.Guardian_name}} required><br>
     <label>Valid Email:</label><br> 
-    <input type="email" name="email" value="{{student.Email}}" required><br>
+    <input type="email" name="email" value="{{student.Email}}" required><br> -->
     <br> <button type="submit" class="btn btn-success">OK</button>
 </form>
 </div>
