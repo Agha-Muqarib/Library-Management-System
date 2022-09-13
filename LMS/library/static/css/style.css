@@ -1,0 +1,72 @@
+form{
+    margin-left:30%;
+    border: black solid 5px;
+    border-radius:8px;
+    background-color: rgb(167, 183, 183);
+    padding:10px;
+    width: 45%;
+}
+#view_searched{
+    display:none;
+    position: absolute;
+    margin-left:2%;
+    border-radius:5px ;
+    font-size: 2rem;
+    background-color: rgba(240, 245, 245, 0.944);
+   
+}
+.search{
+    padding:5px;
+}
+#student_search_input{
+    width:30%;
+}
+
+li{
+    padding:2px;
+    margin-left:3px;
+}
+#new_book ,#new_book_instance{
+    display:none;
+}
+.tablinks{
+    background-color: rgb(167, 183, 183);
+    width:30%;
+    margin-left:35%;
+    padding:2px;
+    border-radius:5px;
+}
+.tablinks button{
+    padding:10px;
+    color:black;
+    /* background-color: */
+}
+#book_searched{
+    display:none;
+}
+
+#student_selection div{
+    float:left;
+    padding-left:4px;
+}
+#quick_student_search_view, #quick_book_search_view{
+    display:none;
+    position:fixed;
+    background-color:rgb(220, 217, 217);
+    overflow: auto;
+    border-radius:5px;
+    padding:3px;
+
+    /* background-color: rgb(0,0,0); */
+}
+#quick_student_search_view label, #quick_book_search_view label{
+    display:block;
+    color:rgb(48, 77, 77);
+    padding:2px;
+}
+#student_selection{
+    margin-left:5%;
+}
+#additional_data, #multi{
+    display:none;
+}

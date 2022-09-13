@@ -1,0 +1,45 @@
+<title> Issue Records </title>
+{% extends 'base.html' %}
+
+<body>
+{% block content %}
+<table class="table table-striped">
+<tr>
+    <th>Student name </th>
+    <th>Book ID </th>
+    <th>Issue Date </th>
+    <th>Due Date</th>
+    <th>Remarks on Issuing</th>
+    <th>Remarks on Return</th>
+    <th>Returned</th>
+    <th>Actions</th>
+</tr>
+    {%for i in issue%}
+    <tr>
+        <td>{{i.student}}</td>
+        <td>{{i.book_instance.id}}</td>
+        <td>{{i.issue_date}}</td>
+        <td>{{i.due_date}}</td>
+        <td>{{i.remarks_on_issue}}</td>
+        <td>{{i.remarks_on_return}}</td>
+        <td>
+            {%if i.book_instance.Is_borrowed %}
+            <span><i class="fa fa-times-circle" style="color:rgb(128, 28, 0)"></i></span>
+            <td>
+                <a href="return_book/{{i.id}}"><i class="fa fa-arrow-alt-circle-right"></i><i class="fa fa-book"></i></a>|
+                <a href="edit_issued/{{i.id}}"><i class="fa fa-edit"></i> </a>
+            </td>
+            {%else%}
+            <span><i class="fa fa-check-circle" style="color:green"></i></span>
+            <td><a href="edit_issued/{{i.id}}"><i class="fa fa-edit"></i> </a> | <a href="delete_issued/{{i.id}}"><i class="fa fa-trash-alt"></i></a></td>
+            {%endif%}
+        </td>
+
+        
+        
+    </tr> {% endfor %}
+</table>
+
+{% endblock %}
+</body>
+</html>

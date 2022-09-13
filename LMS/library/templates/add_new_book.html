@@ -1,0 +1,79 @@
+<title>Add New Book</title>
+{% extends 'base.html' %}
+
+<body>
+{% block content %}
+
+    <div class="tablinks">
+        <button onclick="opentab(name)" class="link" name="new_book">New Book</button>
+        <button onclick="opentab(name)" class="link" name="new_book_instance">New Book Instance</button>
+    </div>
+
+    <div id="new_book" class="books">
+        <form method="POST" action="add_new_book" class="form-inline">
+            {% csrf_token %}
+        <label>Book Title.</label><br><div>{{form.book_title}}</div>
+        <label>Book Author.</label><br> <div> {{form.book_author}}</div>
+        <label>Book Pages.</label><br> <div> {{form.book_pages}}</div>
+        <label>Book summary<i>(if any)</i></label><br> <div> {{form.summary}}</div>
+        <!-- <div>
+            <label>Multiple Same Books</label>    
+            <input type="radio" name="mode" id="multiple" value="Multiple" onclick="toggle_quantity_input(id)">
+            <label>Single  book</label>    
+            <input type="radio" value="single" name="mode" id="single" onclick="toggle_quantity_input(id)">
+
+            <div id="additional_data">
+                <b>Note:<i>For multiple copies, separate book number with a comma (',')</i> </b>
+                <div id="multi">
+                    <label>Enter the Book Quantity</label><br>
+                    <input type="number" min="1" name="book_quantity"><br>
+                </div>
+                <label >Book Number(if any) </label><br>
+                <input name="book_number_list">
+            </div>
+        </div> -->
+        <br> <button type="submit" class="btn btn-success">Add Book</button> 
+        </form>
+    </div>
+
+    <div id="new_book_instance" class="books">
+    <form method="POST" action="add_new_book_instance" class="form-inline">
+        {% csrf_token %}
+        <label>Book</label><br><div>{{form_instance.book}}</div>
+        <label>Book Number</label>
+        <div>{{form_instance.book_number}}</div>
+        <br> <button type="submit" class="btn btn-success">Add Book</button> 
+    </form>
+    </div>
+
+<script type="text/javascript">
+    function opentab(tab_name){
+         var tab=document.getElementById(tab_name);
+         var i, tabcontent, tablinks;
+         tabcontent = document.getElementsByClassName("books");
+         for (i = 0; i < tabcontent.length; i++) {
+             tabcontent[i].style.display = "none";
+         }
+         tablinks = document.getElementsByClassName("link");
+         for (i = 0; i < tablinks.length; i++) {
+             tablinks[i].className = tablinks[i].className.replace(" active", "");
+         }
+         tab.style.display = "block";
+
+    }
+    // function toggle_quantity_input(id){
+    //     var obj=document.getElementById("multi");
+    //     document.getElementById("additional_data").style.display="block";
+    //     if(id=="single"){
+    //         obj.style.display="none";
+    //     }
+    //     else{
+    //         obj.style.display="block";   
+    //     }
+    // }
+</script>
+
+{% endblock %}
+</body>
+
+</html>

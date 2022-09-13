@@ -1,0 +1,25 @@
+<title>Add New Student</title>
+{% extends 'base.html' %}
+
+<body>
+    
+{% block content %}
+<div class="form">
+<form method="POST" action="add_new_student" >
+    {% csrf_token %}
+    <label class="label-default">Student Details</label><br>
+    <label>Roll Number:</label><br><div>{{form.roll_number}}</div>
+    <label>Student Name:</label><br> <div> {{form.fullname}}</div>
+    <label>Student Address:</label><br> <div> {{form.address}}</div>
+    <label>Student Study Program:</label><br> <div>{{form.program}}</div><br>
+    <label class="label-default">Student Guardian/Parent Details</label><br>
+
+    <label>Full name:</label><br> <div>{{form.Guardian_name}}</div>
+    <label>Valid Email:</label><br> <div>{{form.Email}}</div>
+    <br> <button type="submit" class="btn btn-success">Add Student</button>
+</form>
+</div>
+{% endblock %}
+
+</body>
+</html>

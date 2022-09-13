@@ -1,0 +1,31 @@
+<title>Edit Student</title>
+{% extends 'base.html' %}
+
+<body>
+{% block content %}
+
+<div class="form">
+<form method="POST" action=""  id="edit_student_data">
+    {% csrf_token %}
+    <label>Details</label>
+    <label>Roll Number:</label><br>
+    {{student}}
+    <!-- <input type="text" name="roll_number" value={{student.roll_number}} required><br>
+    <label>Student Name:</label><br>
+    <input type="text" name="student_name" value={{student.fullname}} required><br>
+    <label>Student Address:</label><br> 
+    <input type="text" name="address" value={{student.address}} required><br>
+    <label>Student Study Program:</label><br> 
+    <input type="text" name="program" value={{student.program}} required><br>
+    <label>Student Guardian/Parent Details</label><br>
+    <label>Full name:</label><br> 
+    <input type="text" name="Guardian_name" value={{student.Guardian_name}} required><br>
+    <label>Valid Email:</label><br> 
+    <input type="email" name="email" value="{{student.Email}}" required><br> -->
+    <br> <button type="submit" class="btn btn-success">OK</button>
+</form>
+</div>
+{% endblock %}
+</body>
+
+</html>

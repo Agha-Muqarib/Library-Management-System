@@ -1,22 +1,24 @@
+<title>Library Management System</title>
 {% extends 'base.html' %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>HOME PAGE</title>
-</head>
+
 <body>
 {% block content %}
 <h1>Library Management System</h1>
-<img src="https://1.bp.blogspot.com/-SdVsE8HMbjo/XIP9E-v_D9I/AAAAAAAAH0o/jkCM_J069LQFdIjvDscBkCFH0cL0CxaPACPcBGAYYCw/s1600/Quote-5.png">
+<div id="message">
+    {{message}}
+</div>
+{%load static%}
+<img src="{%static 'images/Quotes/Quote-5.png' %}">
+<!-- <input type="text" value="{{choosen_img}}"> -->
+
 
 <style>
     img{
-    height:35em;
-    width:35em;
-    margin-top: 4em;
-    border-radius:3em;
+        height:70%;
+        width:auto;
+        margin: 2%;
+        border-radius:3em;
     }
-
 </style>
 
 {% endblock %}

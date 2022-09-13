@@ -1,0 +1,116 @@
+<title>Add Book Issue</title>
+{% extends 'base.html' %}
+
+<body>
+{% block content %}
+
+<form method="POST" action="add_book_issue" class="form-inline">
+    {% csrf_token %}
+    <label>Student Details(Name)</label><br>
+    <div id="student_selection">
+        <div>{{form.student}}</div>
+            <div><input type="text" placeholder="Quick Student Search" id="quick" onkeyup="Quick_search()">
+                <div id="quick_student_search_view"></div>
+            </div>
+    </div>
+
+    <br>
+    <hr>
+    <div class="book_selection">
+        <label>Book Details(Name/UUID)</label>
+        <br>
+        <div><input type="text" placeholder="Quick Book Search" id="quick_book_search" onkeyup="Quick_book_search()">
+            <div id="quick_book_search_view"></div>
+        </div>
+        <select name="book_instance" required id="id_book_instance">
+            <option value="" selected>---------</option>
+            {%for i in book%}
+                <option class="selection" value="{{i.id}}">{{i.book.book_title}} (: {{i.id}})</option>
+            {%endfor%}
+        </select>
+    </div>
+<hr>
+    <label>Remarks</label><br> <div> {{form.remarks_on_issue}}</div>
+    <br> 
+    <button type="submit" class="btn btn-success">Issue Book</button>
+
+</form>
+
+
+<script type="text/javascript">
+    function Quick_search(){
+        var input, items,view;
+        input = document.getElementById('quick').value.toLowerCase();
+        items = document.getElementById('id_student');
+        view=document.getElementById("quick_student_search_view");
+        view.replaceChildren("");
+
+        for(i=1;i<items.children.length.valueOf();i++){
+            var item=items.children[i].innerHTML;
+            if(input !== "" && (item.toLowerCase().indexOf(input)>-1 )){
+                    var list_added = document.createElement("label");
+                    list_added.appendChild(document.createTextNode(item));
+                    list_added.onclick =function(){
+                        items.children[get_clicked_value(this.innerHTML)].setAttribute("selected",true);
+                        view.style.display="none";
+                        // uncomment below line to hide the search input after selection is made
+                        // document.getElementById('quick').style.display="none";
+                    };
+                    view.appendChild(list_added);
+                    view.style.display="block";
+            }
+            else{
+                view.style.display="none";
+            }
+        }
+    }
+    function get_clicked_value(clicked){
+        var items = document.getElementById('id_student');
+        for(i=1;i<items.children.length.valueOf();i++){
+            var item=items.children[i];
+                if (item.innerHTML == clicked ) {
+                    return item.getAttribute("value");
+                }
+        }
+    }
+
+    // Quick book search
+    function Quick_book_search(){
+        var input, items,view;
+        input = document.getElementById('quick_book_search');
+        items = document.getElementById('id_book_instance');
+        view=document.getElementById("quick_book_search_view");
+        view.replaceChildren("");
+
+        for(i=1;i<items.children.length.valueOf();i++){
+            var item=items.children[i].innerHTML;
+            if((input.value.toLowerCase() !== "") && (item.toLowerCase().indexOf(input.value.toLowerCase())>-1 ) ){
+                var list_added = document.createElement("label");
+                list_added.appendChild(document.createTextNode(item));
+                list_added.onclick =function(){
+                    select_clicked_book(this.innerHTML);
+                    view.style.display="none";
+                    // comment below line to unhide the search input after selection is made
+                    input.style.display="none"; input.value="";
+                };
+                view.appendChild(list_added);
+                view.style.display="block";
+            }
+            else{
+                view.style.display="none";
+            }
+        }
+    }
+    function select_clicked_book(clicked){
+        var books = document.getElementById('id_book_instance');   
+        for(i=1;i<books.children.length.valueOf();i++){
+            var item=books.children[i];
+                if (item.innerHTML == clicked ) {
+                    item.setAttribute("selected",true);
+                }
+        }
+    }
+</script>
+{% endblock %}
+</body>
+</html>
