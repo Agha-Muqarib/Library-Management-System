@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Library </title>
+</head>
+<body bgcolor="gray">
+ <h1><center><i>Library Management System</i></h1></center>
+ <label for="bookTitle">Book Title:<br></label>
+ <input type="text" id="bookTitle"><br>
+ <label for="authorName">Author:</label><br>
+ <input type="text" id="authorName"><br>
+ <label for="yearOfPublication">Year of Publication:</label><br>
+ <input type="number" id="yearOfPublication"><br>
+ <button onclick="addBook()">Add Book</button><br>
+ <ul id="bookList">
+<br>
+<bd>
+  <h2>My Library Store:</h2>
+
+</bd>
+</ul><br>
+ <!-- Book items will be added here -->
+ </ul>
+ <script src="script.js"></script>
+</body>
+</html>
+<script>
+function addBook() {
+ const bookTitle = document.getElementById("bookTitle").value;
+ const authorName = document.getElementById("authorName").value;
+ const yearOfPublication = parseInt(document.getElementById("yearOfPublication").value);
+ const currentYear = new Date().getFullYear();
+ const ageOfBook = currentYear - yearOfPublication;
+ const bookList = document.getElementById("bookList");
+ const bookItem = document.createElement("li");
+ bookItem.innerHTML = `${bookTitle} Written by ${authorName} (Published in
+${yearOfPublication}, ${ageOfBook} years old) <button
+onclick="removeBook(this)">Remove</button>`;
+ bookList.appendChild(bookItem);
+ document.getElementById("bookTitle").value = "";
+ document.getElementById("authorName").value = "";
+ document.getElementById("yearOfPublication").value = "";
+}
+function removeBook(button) {
+ const bookItem = button.parentNode;
+ bookItem.parentNode.removeChild(bookItem); }
+ alert("Welcome To KCE Library!");
+</script>
+<style>
+  label {
+  color: black;
+  font-style:inherit ;
+
+}
+
+button {
+  font-size: 150%;
+  font-size:medium;
+  color: darkgreen;
+}
+
+input {
+  font-size: 150%;
+  color:red;
+  border-color: darkred;
+}
+h2{
+  color: darkred;
+}
+</style>
+</body>
+</html>
