@@ -37,6 +37,11 @@ Create and activate virtual environment using <br>
    cd LMS
 ```
 
+### Installing Django:
+
+```ruby
+   pip install Django
+```
 
 ```ruby 
    python manage.py makemigrations
